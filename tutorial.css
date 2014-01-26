@@ -1,8 +1,8 @@
 .tutorial-overlay {position: fixed; top: 0; left: 0; z-index: 100; background: #000; opacity: .8; filter: alpha(opacity=80); z-index: 100; display: block; height: 100%; width: 100%;}
 .tutorial-highlight {z-index: 101}
 
-.tutorial-cover .tutorial-content {position: absolute; background: #fff; padding-bottom: 2em; z-index: 101; min-width: 300px; box-shadow: 0px 0px 4px 2px rgba(255,255,255, 0.4)}
-.tutorial-cover .tutorial-back, .tutorial-cover .tutorial-next {position: absolute; bottom: 0; left: 0; background: #0D6AB7; color: #fff; z-index: 10}
+.tutorial-cover .tutorial-content {position: absolute; background: #fff; color: #000; padding-bottom: 2em; z-index: 101; min-width: 300px; max-width: 600px; box-shadow: 0px 0px 4px 2px rgba(255,255,255, 0.4)}
+.tutorial-cover .tutorial-back, .tutorial-cover .tutorial-next {position: absolute; bottom: 0; left: 0; z-index: 10}
 .tutorial-cover .tutorial-next {left: auto; right: 0}
 
 .tutorial-close {background: #000; color: #fff; float: right; margin: 0 0 .5em .5em}

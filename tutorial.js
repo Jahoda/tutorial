@@ -6,7 +6,6 @@ function tutorial() {
 
   var steps = document.querySelectorAll('*[data-tutorial]').length;
   if (steps == 0) return;
-
   createTutorialElements();
   changeStep();
 
@@ -90,9 +89,11 @@ function tutorial() {
     clearHighlight();
     var el = currentStep;
     tutorialCover.style.display = "block";
-    if (el.style.position = "static") {
+
+    if (getStyle(el, "position") == "static") {
       el.style.position = "relative";
     }
+
     var clientRect = el.getBoundingClientRect();
     var top = clientRect.top + (document.documentElement.scrollTop || document.body.scrollTop);
     var left = clientRect.left + (document.documentElement.scrollLeft || document.body.scrollLeft);
@@ -134,6 +135,32 @@ function tutorial() {
   window.onresize = function() {
     if (tutorialCover && tutorialCover.style.display != "none") {
       highlight();
+    }
+  }
+
+  function getStyle(oElm, strCssRule) {
+    var strValue = "";
+    if (document.defaultView && document.defaultView.getComputedStyle) {
+      strValue = document.defaultView.getComputedStyle(oElm, "").getPropertyValue(strCssRule);
+    } else if (oElm.currentStyle) {
+      strCssRule = strCssRule.replace(/\-(\w)/g, function (strMatch, p1) {
+        return p1.toUpperCase();
+      });
+      strValue = oElm.currentStyle[strCssRule];
+    }
+    return strValue;
+  }
+}
+
+function createTutorial(items) {
+  window.onload = addItems;
+  
+  function addItems() {
+    var i = 1;
+    for (item in items) {
+      items[item].setAttribute("data-tutorial-step", i);
+      items[item].setAttribute("data-tutorial", item);
+      i++;
     }
   }
 }
